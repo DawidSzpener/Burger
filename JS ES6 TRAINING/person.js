@@ -1,8 +1,6 @@
 class Person {
-  constructor() {
-    this.age = 27
-    this.name = "Dawid Szpener"
-  }
+    age = 27
+    name = "Dawid Szpener"
 
   printPersonsDetails = () => {
     return this.name + " is " + this.age + " year's old"
