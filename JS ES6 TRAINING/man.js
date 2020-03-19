@@ -7,5 +7,3 @@ class Man {
     return this.gender
   }
 }
-
-export default Man
