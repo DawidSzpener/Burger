@@ -20,14 +20,24 @@ class App extends Component {
     })
   }
 
+  userInputHandler = (event) => {
+    this.setState({
+      users: [
+        { name: "Dawid" },
+        { name: event.target.value },
+        { name: "Marek" } 
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>User List:</h1>
         <button onClick={this.tyranozaurosHandler}>TYRANOZAURUS REX</button>
-        <User name = {this.state.users[0].name} />
-        <User name = {this.state.users[1].name} />
-        <User name = {this.state.users[2].name} />
+        <User name={this.state.users[0].name} />
+        <User name={this.state.users[1].name} change={this.userInputHandler}/>
+        <User name={this.state.users[2].name} />
       </div>
     );
   }

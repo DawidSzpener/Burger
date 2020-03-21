@@ -2,7 +2,10 @@ import React from 'react'
 
 const User = (props) => {
   return (
-    <p>{props.name}</p>
+    <div>
+      <p>{props.name}</p>
+      <input type="text" value={props.name} onChange={props.change}/>
+    </div>
   )
 }
 
