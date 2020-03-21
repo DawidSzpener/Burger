@@ -12,7 +12,12 @@ class App extends Component {
   }
 
   tyranozaurosHandler = () => {
-    console.log("TYRANOZAURUS REX")
+    this.setState({
+      users: [
+        { name: "TYRANOZAURUS REX" },
+        { name: "TYRANOZAURUS REX" },
+        { name: "TYRANOZAURUS REX" }      ]
+    })
   }
 
   render() {
