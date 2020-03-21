@@ -10,10 +10,16 @@ class App extends Component {
       { name: "Marek" }
     ]
   }
+
+  tyranozaurosHandler = () => {
+    console.log("TYRANOZAURUS REX")
+  }
+
   render() {
     return (
       <div className="App">
         <h1>User List:</h1>
+        <button onClick={this.tyranozaurosHandler}>TYRANOZAURUS REX</button>
         <User name = {this.state.users[0].name} />
         <User name = {this.state.users[1].name} />
         <User name = {this.state.users[2].name} />
