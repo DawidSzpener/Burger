@@ -7,3 +7,5 @@ const UserInput = () => {
     </div>
   )
 }
+
+export default UserInput
