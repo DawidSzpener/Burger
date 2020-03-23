@@ -8,7 +8,8 @@ class App extends Component {
       { name: "Dawid" },
       { name: "Seba" },
       { name: "Marek" }
-    ]
+    ],
+    usersToggle: false
   }
 
   tyranozaurosHandler = () => {
@@ -17,6 +18,13 @@ class App extends Component {
         { name: "TYRANOZAURUS REX" },
         { name: "TYRANOZAURUS REX" },
         { name: "TYRANOZAURUS REX" }      ]
+    })
+  }
+
+  toggleUsersHandler = () => {
+    const toggle = this.state.usersToggle
+    this.setState({
+      usersToggle: !toggle
     })
   }
 
@@ -34,10 +42,14 @@ class App extends Component {
     return (
       <div className="App">
         <h1>User List:</h1>
-        <button onClick={this.tyranozaurosHandler}>TYRANOZAURUS REX</button>
-        <User name={this.state.users[0].name} />
-        <User name={this.state.users[1].name} change={this.userInputHandler}/>
-        <User name={this.state.users[2].name} />
+        <button onClick={this.toggleUsersHandler}>Toggle Users</button>
+        { this.state.usersToggle ? 
+        <div>
+          <User name={this.state.users[0].name} />
+          <User name={this.state.users[1].name} change={this.userInputHandler}/>
+          <User name={this.state.users[2].name} />
+        </div> : null
+        }
       </div>
     );
   }
