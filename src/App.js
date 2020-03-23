@@ -5,9 +5,9 @@ import User from './components/User'
 class App extends Component {
   state = {
     users: [
-      { name: "Dawid" },
-      { name: "Seba" },
-      { name: "Marek" }
+      { id: 'D', name: "Dawid" },
+      { id: 'S', name: "Seba" },
+      { id: 'M', name: "Marek" }
     ],
     usersToggle: false
   }
@@ -28,18 +28,26 @@ class App extends Component {
     })
   }
 
-  userInputHandler = (event) => {
-    this.setState({
-      users: [
-        { name: "Dawid" },
-        { name: event.target.value },
-        { name: "Marek" } 
-      ]
+  userInputHandler = ( event, id ) => {
+
+    const userIndex = this.state.users.findIndex((u) => {
+      return u.id === id
     })
+
+    const user = {
+      ...this.state.users[userIndex]
+    }
+
+    user.name = event.target.value
+
+    const users = [...this.state.users]
+    users[userIndex] = user
+
+    this.setState({ users: users })
   }
 
   deleteUserHandler = (userIndex) => {
-    const users = this.state.users
+    const users = [...this.state.users]
     users.splice(userIndex, 1)
     this.setState({
       users: users
@@ -57,6 +65,8 @@ class App extends Component {
           return (
           <User
            name={user.name}
+           key={user.id}
+           change={(event) => this.userInputHandler(event, user.id)}
            click={this.deleteUserHandler.bind(this, index)}/> )
         })}
       </div>)
