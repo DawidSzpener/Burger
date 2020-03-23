@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import User from './components/User'
+import Validation from './components/Validation'
+import Char from './components/Char'
 
 class App extends Component {
   state = {
@@ -9,7 +11,8 @@ class App extends Component {
       { id: 'S', name: "Seba" },
       { id: 'M', name: "Marek" }
     ],
-    usersToggle: false
+    usersToggle: false,
+    inputText: ""
   }
 
   tyranozaurosHandler = () => {
@@ -54,6 +57,19 @@ class App extends Component {
     })
   }
 
+  inputChangeHandler = (event) => {
+    this.setState({
+      inputText: event.target.value
+    })
+  }
+
+  letterRemovalHandler = (index) => {
+    const text = this.state.inputText.split('')
+    text.splice(index, 1)
+    const newText = text.join('')
+    this.setState({ inputText: newText})
+  }
+
   render() {
 
     let users = null 
@@ -72,8 +88,21 @@ class App extends Component {
       </div>)
     }
 
+    const charList = this.state.inputText.split('').map((char, index) => {
+      return (
+        <Char
+          letter={char}
+          key={index}
+          delete={() => this.letterRemovalHandler(index)}/>
+      )
+    })
+
     return (
       <div className="App">
+        <input type="text" onChange={this.inputChangeHandler}/>
+        <p>{this.state.inputText.length}</p>
+        <Validation text={this.state.inputText.length}/>
+        {charList}
         <h1>User List:</h1>
         <button onClick={this.toggleUsersHandler}>Toggle Users</button>
         {users}
