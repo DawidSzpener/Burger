@@ -38,6 +38,14 @@ class App extends Component {
     })
   }
 
+  deleteUserHandler = (userIndex) => {
+    const users = this.state.users
+    users.splice(userIndex, 1)
+    this.setState({
+      users: users
+    })
+  }
+
   render() {
 
     let users = null 
@@ -45,9 +53,11 @@ class App extends Component {
     if (this.state.usersToggle) {
       users = (
       <div>
-        {this.state.users.map(user => {
+        {this.state.users.map((user, index) => {
           return (
-          <User name={user.name}/> )
+          <User
+           name={user.name}
+           click={this.deleteUserHandler.bind(this, index)}/> )
         })}
       </div>)
     }
