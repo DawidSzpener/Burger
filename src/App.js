@@ -39,17 +39,24 @@ class App extends Component {
   }
 
   render() {
+
+    let users = null 
+
+    if (this.state.usersToggle) {
+      users = (
+      <div>
+        {this.state.users.map(user => {
+          return (
+          <User name={user.name}/> )
+        })}
+      </div>)
+    }
+
     return (
       <div className="App">
         <h1>User List:</h1>
         <button onClick={this.toggleUsersHandler}>Toggle Users</button>
-        { this.state.usersToggle ? 
-        <div>
-          <User name={this.state.users[0].name} />
-          <User name={this.state.users[1].name} change={this.userInputHandler}/>
-          <User name={this.state.users[2].name} />
-        </div> : null
-        }
+        {users}
       </div>
     );
   }
