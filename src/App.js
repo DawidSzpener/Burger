@@ -82,9 +82,20 @@ class App extends Component {
       style.backgroundColor = "red"
     }
 
+    const classes = []
+
+    if (this.state.users.length <= 2) {
+      classes.push('red')
+    }
+
+    if (this.state.users.length <= 1) {
+      classes.push('bold')
+    }
+
     return (
       <div className="App">
         <h1>User List:</h1>
+        <p className={classes.join(' ')}>Some text with dunamic classes</p>
         <button style={style} onClick={this.toggleUsersHandler}>Toggle Users</button>
         {users}
       </div>
