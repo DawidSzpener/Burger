@@ -9,8 +9,7 @@ class App extends Component {
       { id: 'S', name: "Seba" },
       { id: 'M', name: "Marek" }
     ],
-    usersToggle: false,
-    inputText: ""
+    usersToggle: false
   }
 
   tyranozaurosHandler = () => {
@@ -57,6 +56,14 @@ class App extends Component {
 
   render() {
 
+    const style = {
+      backgroundColor: "green",
+      color: "white",
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     let users = null 
 
     if (this.state.usersToggle) {
@@ -71,12 +78,14 @@ class App extends Component {
            click={this.deleteUserHandler.bind(this, index)}/> )
         })}
       </div>)
+
+      style.backgroundColor = "red"
     }
 
     return (
       <div className="App">
         <h1>User List:</h1>
-        <button onClick={this.toggleUsersHandler}>Toggle Users</button>
+        <button style={style} onClick={this.toggleUsersHandler}>Toggle Users</button>
         {users}
       </div>
     );
