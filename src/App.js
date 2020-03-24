@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import User from './components/User'
+import UserList from './components/UserList'
 
 class App extends Component {
   state = {
@@ -69,14 +69,10 @@ class App extends Component {
     if (this.state.usersToggle) {
       users = (
       <div>
-        {this.state.users.map((user, index) => {
-          return (
-          <User
-           name={user.name}
-           key={user.id}
-           change={(event) => this.userInputHandler(event, user.id)}
-           click={this.deleteUserHandler.bind(this, index)}/> )
-        })}
+        <UserList 
+          users={this.state.users}
+          changed={this.userInputHandler}
+          click={this.deleteUserHandler}/>
       </div>)
 
       style.backgroundColor = "red"
