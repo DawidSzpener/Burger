@@ -55,6 +55,19 @@ class App extends Component {
     })
   }
 
+  shouldComponentUpdate() {
+    console.log("Should component update?")
+    return true
+  }
+
+  componentDidUpdate() {
+    console.log("Component did update")
+  }
+
+  componentDidMount() {
+    console.log("Component did mount")
+  }
+
   render() {
 
     const style = {
