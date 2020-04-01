@@ -3,9 +3,9 @@ import classes from './Toolbar.css'
 import Logo from '../../Logo/Logo'
 import NavigationItems from '../NavigationsItems/NavigationItems'
 
-const toolbar = () => (
+const toolbar = (props) => (
   <header className={classes.Toolbar}>
-    <div>MENU</div>
+    <div onClick={props.clicked}>MENU</div>
     <Logo height="80%"/>
     <nav className={classes.DesktopOnly}>
       <NavigationItems />
