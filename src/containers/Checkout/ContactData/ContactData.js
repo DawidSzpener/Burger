@@ -29,6 +29,7 @@ class ContentData extends Component {
     axios.post('/burgers.json', burger)
       .then(response => {
         this.setState({ loading: false })
+        this.props.history.push('/')
       })
       .catch(err => {
         this.setState({ loading: false })
