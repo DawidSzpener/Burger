@@ -37,14 +37,20 @@ class ContentData extends Component {
       })
   }
 
+  inputChanged = (event) => {
+    console.log(event.target.value)
+
+    
+  }
+
   render () {
     let form = (
       <form>
-      <Input inputtype='input' type="text" name="name" placeholder="Your name" />
-      <Input inputtype='input' type="email" name="email" placeholder="Your email" />
-      <Input inputtype='input' type="text" name="street" placeholder="Your street" />
-      <Input inputtype='input' type="text" name="postal" placeholder="Your postal code" />
-      <Input inputtype='select' type="text" name="delivery" />
+      <Input inputtype='input' type="text" name="name" placeholder="Your name" changed={this.inputChanged}/>
+      <Input inputtype='input' type="email" name="email" placeholder="Your email" changed={this.inputChanged}/>
+      <Input inputtype='input' type="text" name="street" placeholder="Your street" changed={this.inputChanged}/>
+      <Input inputtype='input' type="text" name="postal" placeholder="Your postal code" changed={this.inputChanged}/>
+      <Input inputtype='select' type="text" name="delivery" changed={this.inputChanged}/>
       <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
     </form>
     )
