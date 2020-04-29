@@ -40,7 +40,7 @@ class ContentData extends Component {
   inputChanged = (event) => {
     console.log(event.target.value)
 
-    
+
   }
 
   render () {
@@ -60,7 +60,7 @@ class ContentData extends Component {
     }
     return (
       <div className={classes.ContactData}>
-        <h4>Enter your contact data</h4>
+        <h4>Enter your contact details</h4>
         {form}
       </div>
     )
