@@ -63,6 +63,7 @@ class ContentData extends Component {
         <h4>Enter your contact details</h4>
         {form}
       </div>
+      
     )
   }
 }
