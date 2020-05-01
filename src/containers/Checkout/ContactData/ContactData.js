@@ -60,10 +60,9 @@ class ContentData extends Component {
     }
     return (
       <div className={classes.ContactData}>
-        <h4>Enter your contact details</h4>
+        <h4>Fill in your contact details</h4>
         {form}
       </div>
-      
     )
   }
 }
