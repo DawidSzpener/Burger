@@ -14,7 +14,7 @@ class ContentData extends Component {
           type: 'text',
           placeholder: 'Your name',
         },
-        value: ''
+        value: '',
       },
       street: {
         elementType: 'input',
@@ -83,10 +83,16 @@ class ContentData extends Component {
       })
   }
 
-  inputChanged = (event) => {
-    console.log(event.target.value)
-
-
+  inputChangedHandler = (event, inputIdentifier) => {
+    const updatedOrderForm = {
+      ...this.state.orderForm
+    }
+    const updatedFormElement = {
+      ...updatedOrderForm[inputIdentifier]
+    }
+    updatedFormElement.value = event.target.value
+    updatedOrderForm[inputIdentifier] = updatedFormElement
+    this.setState({orderForm: updatedOrderForm})
   }
 
   render () {
@@ -107,7 +113,7 @@ class ContentData extends Component {
           elementType={formElement.config.elementType}
           elementConfig={formElement.config.elementConfig}
           value={formElement.config.value}
-          changed={this.inputChanged}
+          changed={(event) => this.inputChangedHandler(event, formElement.id)}
           />
       ))}
       <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
