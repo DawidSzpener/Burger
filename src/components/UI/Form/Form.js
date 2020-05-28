@@ -23,8 +23,11 @@ const form = (props) => {
       <Aux>
         <p>Chose Delivery Method</p>
         <select className={classes.InputElement} onChange={props.changed} {...props.elementConfig} value={props.value}>
-          <option key='Premium' value='Premium'>Premium</option>
-          <option key='Standard' value='Standard'>Standard</option>
+          {props.elementConfig.options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.displayedValue}
+            </option>
+          ))}
         </select>
       </Aux>
       break
