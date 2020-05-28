@@ -90,13 +90,26 @@ class ContentData extends Component {
   }
 
   render () {
+
+    const formElementsArray = []
+    for (let key in this.state.orderForm) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.orderForm[key]
+      })
+    }
+
     let form = (
       <form>
-      <Input elementType="" elementConfig="" value="" changed={this.inputChanged}/>
-      <Input inputtype='input' type="email" name="email" placeholder="Your email" changed={this.inputChanged}/>
-      <Input inputtype='input' type="text" name="street" placeholder="Your street" changed={this.inputChanged}/>
-      <Input inputtype='input' type="text" name="postal" placeholder="Your postal code" changed={this.inputChanged}/>
-      <Input inputtype='select' type="text" name="delivery" changed={this.inputChanged}/>
+      {formElementsArray.map(formElement => (
+        <Input 
+          key={formElement.id}
+          elementType={formElement.config.elementType}
+          elementConfig={formElement.config.elementConfig}
+          value={formElement.config.value}
+          changed={this.inputChanged}
+          />
+      ))}
       <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
     </form>
     )
