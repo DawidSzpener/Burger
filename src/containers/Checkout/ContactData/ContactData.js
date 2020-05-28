@@ -7,11 +7,57 @@ import Input from '../../../components/UI/Form/Form'
 
 class ContentData extends Component {
   state = {
-    name: '',
-    email: '',
-    adress: {
-      street: '',
-      postalCode: ''
+    orderForm: {
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your name',
+        },
+        value: ''
+      },
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Street',
+        },
+        value: ''
+      },
+      zipcode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'ZIP code',
+        },
+        value: ''
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Country',
+        },
+        value: ''
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'Your email',
+        },
+        value: ''
+      },
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [
+            {value: 'fastest', displayedValue: 'fastest'},
+            {value: 'cheapest', displayedValue: 'cheapest'}
+          ]
+        },
+        value: ''
+      },
     },
     loading: false
   }
@@ -46,7 +92,7 @@ class ContentData extends Component {
   render () {
     let form = (
       <form>
-      <Input inputtype='input' type="text" name="name" placeholder="Your name" changed={this.inputChanged}/>
+      <Input elementType="" elementConfig="" value="" changed={this.inputChanged}/>
       <Input inputtype='input' type="email" name="email" placeholder="Your email" changed={this.inputChanged}/>
       <Input inputtype='input' type="text" name="street" placeholder="Your street" changed={this.inputChanged}/>
       <Input inputtype='input' type="text" name="postal" placeholder="Your postal code" changed={this.inputChanged}/>

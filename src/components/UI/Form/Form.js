@@ -5,18 +5,24 @@ import Aux from '../../../hoc/Aux'
 const form = (props) => {
   let inputElement = null
 
-  switch (props.inputtype) {
+  switch (props.elementType) { 
     case('input'):
-      inputElement = <input className={classes.InputElement} onChange={props.changed} {...props}/>
+      inputElement = <input
+        className={classes.InputElement}
+        onChange={props.changed} 
+        {...props.elementConfig} value={props.value}/>
       break
     case('textarea'):
-      inputElement = <textarea className={classes.InputElement} onChange={props.changed} {...props}/>
+      inputElement = <textarea 
+        className={classes.InputElement} 
+        onChange={props.changed} 
+        {...props.elementConfig} value={props.value}/>
       break
     case('select'):
       inputElement = 
       <Aux>
         <p>Chose Delivery Method</p>
-        <select className={classes.InputElement} onChange={props.changed} {...props}>
+        <select className={classes.InputElement} onChange={props.changed} {...props.elementConfig} value={props.value}>
           <option key='Premium' value='Premium'>Premium</option>
           <option key='Standard' value='Standard'>Standard</option>
         </select>
