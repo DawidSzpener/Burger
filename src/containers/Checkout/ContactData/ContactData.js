@@ -65,13 +65,14 @@ class ContentData extends Component {
   orderHandler = (event) => {
     event.preventDefault()
     this.setState({ loading: true })
+    const formData = {}
+    for (let formElementIdentifier in this.state.orderForm) {
+      formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value
+    }
     const burger = {
       ingredients: this.props.ingredients,
       price: this.props.price,
-      user: {
-        name: 'some',
-        email: 'some@some.com'
-      },
+      orderData: formData
     }
     axios.post('/burgers.json', burger)
       .then(response => {
@@ -106,7 +107,7 @@ class ContentData extends Component {
     }
 
     let form = (
-      <form>
+      <form onSubmit={this.orderHandler}>
       {formElementsArray.map(formElement => (
         <Input 
           key={formElement.id}
