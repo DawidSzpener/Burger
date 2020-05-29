@@ -15,6 +15,10 @@ class ContentData extends Component {
           placeholder: 'Your name',
         },
         value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       street: {
         elementType: 'input',
@@ -22,7 +26,11 @@ class ContentData extends Component {
           type: 'text',
           placeholder: 'Street',
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       zipcode: {
         elementType: 'input',
@@ -30,7 +38,11 @@ class ContentData extends Component {
           type: 'text',
           placeholder: 'ZIP code',
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       country: {
         elementType: 'input',
@@ -38,7 +50,11 @@ class ContentData extends Component {
           type: 'text',
           placeholder: 'Country',
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       email: {
         elementType: 'input',
@@ -46,7 +62,11 @@ class ContentData extends Component {
           type: 'email',
           placeholder: 'Your email',
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
       deliveryMethod: {
         elementType: 'select',
@@ -56,10 +76,24 @@ class ContentData extends Component {
             {value: 'cheapest', displayedValue: 'cheapest'}
           ]
         },
-        value: ''
+        value: '',
+        validation: {
+          required: true
+        },
+        valid: false
       },
     },
     loading: false
+  }
+
+  checkValidity(value, rules) {
+    let isValid = true
+
+    if(rules.required) {
+      isValid = value.trim() !== '' && isValid
+    }
+
+    return isValid
   }
 
   orderHandler = (event) => {
@@ -92,6 +126,8 @@ class ContentData extends Component {
       ...updatedOrderForm[inputIdentifier]
     }
     updatedFormElement.value = event.target.value
+    updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
+    console.log(updatedFormElement)
     updatedOrderForm[inputIdentifier] = updatedFormElement
     this.setState({orderForm: updatedOrderForm})
   }
