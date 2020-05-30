@@ -3,18 +3,23 @@ import classes from './Form.css'
 import Aux from '../../../hoc/Aux'
 
 const form = (props) => {
+  const inputClasses = [classes.InputElement]
   let inputElement = null
+
+  if (props.invalid) {
+    inputClasses.push(classes.Invalid)
+  }
 
   switch (props.elementType) { 
     case('input'):
       inputElement = <input
-        className={classes.InputElement}
+        className={inputClasses.join(' ')}
         onChange={props.changed} 
         {...props.elementConfig} value={props.value}/>
       break
     case('textarea'):
       inputElement = <textarea 
-        className={classes.InputElement} 
+        className={inputClasses.join(' ')} 
         onChange={props.changed} 
         {...props.elementConfig} value={props.value}/>
       break
@@ -22,7 +27,7 @@ const form = (props) => {
       inputElement = 
       <Aux>
         <p>Chose Delivery Method</p>
-        <select className={classes.InputElement} onChange={props.changed} {...props.elementConfig} value={props.value}>
+        <select className={inputClasses.join(' ')} onChange={props.changed} {...props.elementConfig} value={props.value}>
           {props.elementConfig.options.map(option => (
             <option key={option.value} value={option.value}>
               {option.displayedValue}
@@ -32,7 +37,7 @@ const form = (props) => {
       </Aux>
       break
     default:
-      inputElement = <input className={classes.InputElement} onChange={props.changed} {...props}/>
+      inputElement = <input className={inputClasses.join(' ')} onChange={props.changed} {...props}/>
   }
 
   return (
