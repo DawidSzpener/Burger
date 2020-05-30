@@ -18,7 +18,8 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       street: {
         elementType: 'input',
@@ -30,7 +31,8 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       zipcode: {
         elementType: 'input',
@@ -42,7 +44,8 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       country: {
         elementType: 'input',
@@ -54,7 +57,8 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       email: {
         elementType: 'input',
@@ -66,7 +70,8 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
+        touched: false
       },
       deliveryMethod: {
         elementType: 'select',
@@ -80,7 +85,7 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false
+        valid: false,
       },
     },
     loading: false
@@ -127,7 +132,7 @@ class ContentData extends Component {
     }
     updatedFormElement.value = event.target.value
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
-    console.log(updatedFormElement)
+    updatedFormElement.touched = true
     updatedOrderForm[inputIdentifier] = updatedFormElement
     this.setState({orderForm: updatedOrderForm})
   }
@@ -151,6 +156,7 @@ class ContentData extends Component {
           elementConfig={formElement.config.elementConfig}
           value={formElement.config.value}
           invalid={!formElement.config.valid}
+          touched={formElement.config.touched}
           changed={(event) => this.inputChangedHandler(event, formElement.id)}
           />
       ))}

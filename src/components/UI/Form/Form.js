@@ -6,7 +6,7 @@ const form = (props) => {
   const inputClasses = [classes.InputElement]
   let inputElement = null
 
-  if (props.invalid) {
+  if (props.invalid && props.touched) {
     inputClasses.push(classes.Invalid)
   }
 
