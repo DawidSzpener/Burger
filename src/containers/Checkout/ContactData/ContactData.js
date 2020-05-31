@@ -88,6 +88,7 @@ class ContentData extends Component {
         valid: false,
       },
     },
+    formIsValid: false,
     loading: false
   }
 
@@ -134,7 +135,12 @@ class ContentData extends Component {
     updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
     updatedFormElement.touched = true
     updatedOrderForm[inputIdentifier] = updatedFormElement
-    this.setState({orderForm: updatedOrderForm})
+
+    let formIsValid = true
+    for (let inputIdentifier in updatedFormElement) {
+      formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
+    }
+    this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid})
   }
 
   render () {
@@ -160,7 +166,7 @@ class ContentData extends Component {
           changed={(event) => this.inputChangedHandler(event, formElement.id)}
           />
       ))}
-      <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
+      <Button btnType="Success" disabled={!this.state.formIsValid} clicked={this.orderHandler}>ORDER</Button>
     </form>
     )
 
