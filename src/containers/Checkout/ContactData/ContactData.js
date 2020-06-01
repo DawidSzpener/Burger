@@ -81,7 +81,7 @@ class ContentData extends Component {
             {value: 'cheapest', displayedValue: 'cheapest'}
           ]
         },
-        value: '',
+        value: 'fastest',
         validation: {
           required: true
         },
