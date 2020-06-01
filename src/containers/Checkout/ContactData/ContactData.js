@@ -85,7 +85,7 @@ class ContentData extends Component {
         validation: {
           required: true
         },
-        valid: false,
+        valid: true,
       },
     },
     formIsValid: false,
@@ -137,7 +137,7 @@ class ContentData extends Component {
     updatedOrderForm[inputIdentifier] = updatedFormElement
 
     let formIsValid = true
-    for (let inputIdentifier in updatedFormElement) {
+    for (let inputIdentifier in updatedOrderForm) {
       formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid
     }
     this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid})
