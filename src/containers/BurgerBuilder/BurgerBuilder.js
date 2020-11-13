@@ -6,7 +6,6 @@ import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
 import Modal from '../../components/UI/Modal/Modal'
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
-import axios from '../../axios-orders'
 import Spinner from '../../components/UI/Spinner/Spinner'
 import * as actionTypes from '../../store/actions'
 
@@ -26,7 +25,7 @@ export class BurgerBuilder extends Component {
     .reduce((sum,el) => {
       return sum + el
     }, 0)
-    this.setState({ purchaseable: sum > 0})
+    return sum > 0
   }
 
   purchaseHandler = () => {
@@ -70,7 +69,7 @@ export class BurgerBuilder extends Component {
             ingredientRemoved={this.props.onIngredientRemoved}
             disabled={disabledButton}
             price={this.props.price}
-            purchaseable={this.state.purchaseable}
+            purchaseable={this.updatePurchaseState(this.props.ings)}
             order={this.purchaseHandler}
             />
       </Aux>)
